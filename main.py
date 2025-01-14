@@ -7,7 +7,8 @@ from station import workflow
 
 def main():
     continous_data= ### your path here/sample_inputs/
-    nrfa_meta= ### your path to nrfa_metadata here         
+    nrfa_meta= ### your path to nrfa_metadata here    
+        
     station_list=list(nrfa_meta.id)
 
     func=partial(workflow,

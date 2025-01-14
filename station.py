@@ -47,6 +47,8 @@ class station:
         self.amax_ror.set_index('water_year',inplace=True)
         # reorer as [date_level, valuel_level, ror_level, date_flow, value_flow, ror_flow]
         self.amax_ror=self.amax_ror[['date_level','ror_level','ror_rel_level','date_flow','ror_flow','ror_rel_flow']]
+        # round to 3 decimals
+        self.amax_ror=self.amax_ror.round(3)
 
     def export_dataset(self):
         # If data folder does not exist, create it
@@ -77,6 +79,7 @@ def compute_rors(any_data, data_type='level'):
         ror_rel_t1 = ror_rel_t1 / any_data['value'].shift(1)
         return ror_rel_t1.values
     
+    # Limit to three decimals
     any_data[f'ror_rel_{data_type}']=t_minus_1_ror(any_data)
     return any_data
 
