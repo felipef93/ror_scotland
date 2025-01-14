@@ -4,8 +4,9 @@ This repository contains the code and data used in the study **"Characteristics 
 
 ## Contents
 
-- **`code`**: Contains the code used to extract the annual maximum rates of rise for flow and level for every station in Scotland.
+- **`station.py`** and **`main.py`**: Code used to extract the annual maximum rates of rise for flow and level for every station in Scotland.
 - **`data`**: Includes annual maximum flow and level rates of rise for each station in the study.
+- **`sample inputs`**: sample of inputs to the code 
 - **`final_extracted_ror.csv`**: Lists the events considered in the analysis after the removal of winter events and visual checks for spurious data.
 
 ## Raw data availability 
@@ -15,4 +16,4 @@ This repository contains the code and data used in the study **"Characteristics 
 
 ## Usage of the Code
 
-A sample of flow and level inputs has been provided for ease of use with the code. The primary script for extracting the rates of rise (RoRs) for each station is located at **`station.py`**. For batch processing of multiple stations, parallelized code is available at **`main.py`**.
+A sample of flow and level inputs has been provided for ease of use with the code. The primary script for extracting the rates of rise (RoRs) for each station is located at **`station.py`**. For batch processing of multiple stations, parallelized code is available at **`main.py`**. To run, update the variables `continous_data` and `nrfa_meta` in main.

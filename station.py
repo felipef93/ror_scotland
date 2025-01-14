@@ -87,9 +87,9 @@ def read_data(nrfa_station_nbr,nrfa_meta,continous_data_location):
 
     station_meta=nrfa_meta[nrfa_meta['id']==nrfa_station_nbr]
     if 'SEPA' in station_meta['measuring-authority-id'].values[0]:
-        if os.path.exists(f'{continous_data_location}/mergedlevel/{str(local_station_nbr)}.txt') and os.path.exists(f'{continous_data_location}/mergedflow/{str(local_station_nbr)}.txt'):    
-            level_data=pd.read_csv(f'{continous_data_location}/mergedlevel/{str(local_station_nbr)}.txt',index_col=0,parse_dates=True,usecols=['datetime','value'])
-            flow_data=pd.read_csv(f'{continous_data_location}/mergedflow/{str(local_station_nbr)}.txt',index_col=0,parse_dates=True,usecols=['datetime','value'])
+        if os.path.exists(f'{continous_data_location}/level/{str(local_station_nbr)}.txt') and os.path.exists(f'{continous_data_location}/flow/{str(local_station_nbr)}.txt'):    
+            level_data=pd.read_csv(f'{continous_data_location}/level/{str(local_station_nbr)}.txt',index_col=0,parse_dates=True,usecols=['datetime','value'])
+            flow_data=pd.read_csv(f'{continous_data_location}/flow/{str(local_station_nbr)}.txt',index_col=0,parse_dates=True,usecols=['datetime','value'])
             start_date=level_data.index[0]
             end_date=level_data.index[-1]
         else:
@@ -104,20 +104,15 @@ def read_data(nrfa_station_nbr,nrfa_meta,continous_data_location):
                     data_flow=flow_data,
                     start_date=start_date,
                     end_date=end_date,
-                    #nrfa_max_med=list_nrfa
                     )
 
         return station_x    
     else:
         pass
 
-def workflow(station_id,nrfa_meta,continous_data_location,export_location,nrfa_amax_series):
-        #try:
+def workflow(station_id,nrfa_meta,continous_data_location):
         station = read_data(station_id,nrfa_meta,continous_data_location)
-        export_location=r'C:\Users\c1026040\OneDrive - Newcastle University\Scottish_ror_dataset/'
-        #pot_stations=list(pd.read_csv(r'C:\Users\c1026040\OneDrive - Newcastle University\Scottish_ror_dataset/POT_60_80.txt',header=None)[0])
         if station is not None and not station.data_level.empty:
             station.rors_level_and_flow()
-            #station.export_stations(path=export_location)
             station.merge_datasets()
             station.export_dataset()
