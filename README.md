@@ -4,20 +4,15 @@ This repository contains the code and data used in the study **"Characteristics 
 
 ## Contents
 
-- **`code/`**: Contains the code used to extract the annual maximum rates of rise for flow and level for every station in Scotland.
-- **`data/`**: Includes annual maximum flow and level rates of rise for each station in the study.
+- **`code`**: Contains the code used to extract the annual maximum rates of rise for flow and level for every station in Scotland.
+- **`data`**: Includes annual maximum flow and level rates of rise for each station in the study.
 - **`final_extracted_ror.csv`**: Lists the events considered in the analysis after the removal of winter events and visual checks for spurious data.
 
-## Availability of Raw 15-Minute Flow and Level Time Series
+## Raw data availability 
 
-The 15-minute time series data used in this study are available for download via the [SEPA Time Series Data Service (API)](https://timeseriesdoc.sepa.org.uk/).
+- **15-Minute Flow and Level Time Series**: The 15-minute time series data used in this study are available for download via the [SEPA Time Series Data Service (API)](https://timeseriesdoc.sepa.org.uk/).
+- **NRFA data**: NRFA data, used to converting stations local IDs and identifying the stations is avilable at the [NRFA website](https://nrfa.ceh.ac.uk/data/search)
 
 ## Usage of the Code
 
-A sample input file (`input_sample.csv`) has been provided for ease of use with the code. 
-
-### Main Code
-- The primary script for extracting the rates of rise (RoRs) for each station is located at **`xxxxxx.py`**.
-
-### Parallel Processing
-- For batch processing of multiple stations, parallelized code is available at **`xxxxxxx.py`**.
+A sample of flow and level inputs has been provided for ease of use with the code. The primary script for extracting the rates of rise (RoRs) for each station is located at **`station.py`**. For batch processing of multiple stations, parallelized code is available at **`main.py`**.
